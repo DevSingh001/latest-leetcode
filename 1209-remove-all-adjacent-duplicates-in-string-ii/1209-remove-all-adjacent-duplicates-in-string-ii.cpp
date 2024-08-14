@@ -1,33 +1,28 @@
 class Solution {
 public:
-    
-    bool lastK_1Chars(string& ans,char& newch,int k_1){
-        int it=ans.size()-1;
-        for(int i=0;i<k_1;i++){
-            if(ans[it]!=newch) return false;
-            it--;
+    bool checkK_1Elements(string &ans,int k,char &ch){
+        int it=ans.length()-1;
+        for(int i=0;i<k-1;i++){
+            if(ch!=ans[it]) return false;
+            else it--;
         }
         return true;
     }
     string removeDuplicates(string s, int k) {
-        string ans;
-        
-        for(int i=0;i<s.length();i++){
-            char& newch=s[i];
-            if(ans.size()<k-1)
-                ans.push_back(newch);
-            else{
-                if(lastK_1Chars(ans,newch,k-1)){
-                    for(int j=0;j<k-1;j++){
-                        ans.pop_back();
-                    }
-                }
-                else
-                    ans.push_back(newch);
+        string ans="";
+        for(auto ch:s){
+            if(ans.length()<k-1){
+                ans.push_back(ch);
             }
-
+            else if(checkK_1Elements(ans,k,ch)){
+                for(int i=0;i<k-1;i++){
+                    ans.pop_back();
+                }
+            }
+            else{
+                ans.push_back(ch);
+            }
         }
         return ans;
     }
 };
-   
