@@ -2,13 +2,15 @@ class Solution {
 public:
     string removeDuplicates(string s) {
         string ans="";
-        for(int i=0;i<s.length();i++){
-            if(ans.length()>0&&ans[ans.length()-1]==s[i]){
-                ans.pop_back();
-               
+        for(auto ch:s){
+            if(ans==""){
+                ans.push_back(ch);
+            }
+            else if(ans.length()>=0 && ans[ans.length()-1]!=ch){
+                ans.push_back(ch);
             }
             else{
-                 ans.push_back(s[i]);
+                ans.pop_back();
             }
         }
         return ans;
