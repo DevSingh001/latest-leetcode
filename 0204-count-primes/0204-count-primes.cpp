@@ -10,7 +10,7 @@ public:
         for(int i=2;i*i<=n;i++){
             if(prime[i]){
                 
-                 int j=i*2;
+                 int j=i*i;
             while(j<n){
                 prime[j]=false;
                 j+=i;
