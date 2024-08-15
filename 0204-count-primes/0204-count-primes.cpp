@@ -7,17 +7,21 @@ public:
         prime[0]==prime[1]==false;
         
         int count=0;
-        for(int i=2;i<n;i++){
+        for(int i=2;i*i<=n;i++){
             if(prime[i]){
-                count++;
                 
                  int j=i*2;
             while(j<n){
                 prime[j]=false;
                 j+=i;
             }
-            }
+          }
             
+            }
+        for(int i=2;i<prime.size();i++){
+                if(prime[i]){
+                    count++;
+                }
            
         }
         return count;
